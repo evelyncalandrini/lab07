@@ -1,5 +1,7 @@
 package it.unibo.functional.api;
 
+import java.util.Collection;
+
 /**
  * This class models a function of a single parameter as an Object.
  *
@@ -8,6 +10,7 @@ package it.unibo.functional.api;
  */
 @SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface Function<I, O> {
+
 
     /**
      * Calls the function.
@@ -24,7 +27,13 @@ public interface Function<I, O> {
      * @return A new {@code Function} that implements the identity function with the provided type
      */
     static <T> Function<T, T> identity() {
-        return null;
+        return new Function<T, T>() {
+            @Override
+            public T call(T input) {
+                return input;
+            }
+
+        };
     }
 
 }
